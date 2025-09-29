@@ -1,12 +1,64 @@
+import 'package:app_mig01/logs/entiti/log.dart';
+import 'package:app_mig01/logs/interfas_logs.dart';
+import 'package:app_mig01/logs/repositories/local_logs.dart';
+import 'package:app_mig01/nuestra_pantalla.dart';
 import 'package:flutter/material.dart';
 
+
+
 void main() {
-  runApp(const MyApp());
+
+int number = 10; // tipado
+
+//Node.js servidor BACKEND 
+
+int? nullableNumber; // null safety
+
+String texto = "Hola mundo"; 
+
+final dinamica; // se asigna una sola vez
+
+print(nullableNumber);
+
+final List<String> nombres = ["Juan", "Pedro", "Maria"];
+  
+  dinamica = number + 5;
+  nullableNumber = dinamica;
+
+  print(nullableNumber);
+  
+//llamados a la API Develop Prod
+// que variables usar 
+//tomar datos de internet
+// inicilizar
+// antes de que corra la app 
+// validar si hay internet 
+
+// ve cual idiomar del dispositivo
+//log("antes de correr la app");
+// deterctar tamano de la pantalla
+// detectar idioma del dispositivo
+// log("despues de correr la app"); BACKEND 
+// ficheros para el idioma
+// consumir espacio de memoria logs \
+
+  WidgetsFlutterBinding.ensureInitialized();
+
+  Log log1 = Log(message: "antes de correr la app",);
+
+  InterfasLogs logRepository = LocalLogs(); // usar cualquier implementacion de InterfasLogs
+
+  logRepository.puchLog(log1);
+
+  runApp(const MyApp()); // ejecutar la app
+
 }
 
-//ESTADO
+//ESTADO 
 //SIN ESTADO -> StatelessWidget
 
+// release 20mb listo para producion
+// debug 100mb en desarollo 
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -14,32 +66,32 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
+    // MediaQuery -> informacion del dispositivo
+    final Size size = MediaQuery.of(context).size;
+
+    print(size);
+    // 3 tipos de tama;os
+    // small < 600 pequeño
+    // medium 600 - 1200 mediano  
+    // large > 1200 grande
+
+    // Stream -> flujo de datos
+    
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'No lo ve el usuario',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+       
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 183, 112, 58)),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: NuestraPantalla(inSize:size),
     );
   }
 }
+
+
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
