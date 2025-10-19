@@ -1,4 +1,5 @@
 import 'package:app_mig01/logs/repositories/local_logs.dart';
+import 'package:app_mig01/screens/chat_screen.dart';
 import 'package:app_mig01/screens/main_screens.dart';
 import 'package:app_mig01/widgets/cronometro.dart';
 import 'package:flutter/material.dart';
@@ -85,16 +86,21 @@ void functionOnPressed() async {
           Positioned(
             top: 50,
             left: 50,
-            child: Container(
-             // margin: const EdgeInsets.all(20),
-             // padding: const EdgeInsets.only(left: 20),
-              height: 80,
-              width: 80,
-              decoration: BoxDecoration(
-                color: Colors.purple,
-                borderRadius: BorderRadius.circular(30)
+            child: GestureDetector(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const ChatPage(),));
+              },
+              child: Container(
+               // margin: const EdgeInsets.all(20),
+               // padding: const EdgeInsets.only(left: 20),
+                height: 80,
+                width: 80,
+                decoration: BoxDecoration(
+                  color: Colors.purple,
+                  borderRadius: BorderRadius.circular(30)
+                ),
+                child: const Center(child: Text('Chat', style: TextStyle(color: Colors.white),)),
               ),
-              child: const Center(child: Text('Hola', style: TextStyle(color: Colors.white),)),
             ),
           )
             ],

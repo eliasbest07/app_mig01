@@ -10,7 +10,7 @@ void main() {
 
 int number = 10; // tipado
 
-//Node.js servidor BACKEND 
+//Node.js servidor para socket.io BACKEND 
 
 int? nullableNumber; // null safety
 
